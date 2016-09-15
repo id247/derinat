@@ -1,0 +1,241 @@
+@charset "UTF-8";
+/* ==========================================================================
+ * Layout
+ * ========================================================================== */
+
+.container{
+	overflow: hidden;
+	position: relative;
+
+	&__section{
+		
+	}
+}
+
+/* ==========================================================================
+ * section
+ * ========================================================================== */
+
+.section{
+
+	&__wrap{
+		@include clearfix;
+		max-width: 1360px;
+		padding: 0 5px;
+		margin: auto;
+	}
+
+	&__title{
+		text-align: center;
+		margin: 0 0 40px;
+		font-weight: 700;
+		font-size: 36px;
+		line-height: (50/36);
+	}
+
+	&__text{
+		margin: 0 0 30px;		
+	}
+}
+
+.app-section{
+	position: relative;
+
+	&__logo-placeholder{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		text-align: center;
+
+		@media (min-width: 1300px){
+			right: auto;
+		}
+	}
+
+	&__logo{
+		display: inline-block;
+		text-indent: -9999px;
+		@include sprite($derinat);
+	}
+
+	&__app-placeholder{		
+		display: flex;
+		min-height: 100vh;
+		padding: 100px 0 0;
+
+		align-items: center;
+
+		@media (min-width: 1300px){
+			margin: 0 200px;
+			padding: 0;
+		}
+	}
+
+	&__app{
+		width: 100%;
+	}
+}
+
+
+/* ==========================================================================
+ * app
+ * ========================================================================== */
+
+.app{
+
+	&__loader{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 500;
+	}
+
+	&__error{
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 550;
+	}
+
+	&__page{
+		padding: 35px 0;
+	}
+
+	&__title{
+		font-size: 36px;
+		text-align: center;
+		color: $blue;
+		margin: 0 auto 40px;
+		max-width: 900px;
+	}
+
+	&__text{
+		text-align: center;
+		margin: 0 0 40px;
+	}
+
+	&__buttons{
+		text-align: center;
+		margin: 0 0 40px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+
+
+	&__button-placeholder{
+		margin: 0 20px;
+		display: inline-block;
+		vertical-align: top;	
+	}
+	
+}
+
+/* ==========================================================================
+ * error-message
+ * ========================================================================== */
+
+.error-message{
+	padding: 10px;
+	background: #ff7f7f;
+}
+ 
+
+/* ==========================================================================
+ * loader
+ * ========================================================================== */
+
+.loader{
+	background: rgba(255,255,255,.5);	
+	text-align: center;
+	opacity: 0;
+	visibility: hidden;
+	
+	transition: all .2s;
+
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+	
+	&__content{
+		width: 40px;
+		height: 40px;
+		display: inline-block;
+		animation: spin .6s infinite linear;
+		text-indent: -9999px;
+		content: '';
+	}
+
+	&--visible{
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+/* ==========================================================================
+ * login
+ * ========================================================================== */
+
+.login{
+	padding: 200px 0 0;
+
+	&__text{
+		margin: 0 0 50px;
+		text-align: center;		
+	}
+
+}
+
+/* ==========================================================================
+ * quiz
+ * ========================================================================== */
+
+.quiz{
+
+	&__item{
+		display: none;
+
+		&--visible{
+			display: block;
+		}
+	}
+
+	&__title{
+		
+	}
+
+	&__image-placeholder{
+		margin: 0 0 20px;
+		text-align: center;
+	}
+
+	&__image{
+		max-width: 100%;
+		height:  auto;
+	}
+
+	&__buttons{
+		
+	}
+
+	&__button{
+		position: relative;
+		min-width: 250px;
+	}
+
+	&__radio{
+		position: absolute;
+		left: -9999px;
+	}
+}
