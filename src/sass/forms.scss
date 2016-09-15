@@ -181,3 +181,54 @@
 
 	}
 }
+
+/* ==========================================================================
+ * select
+ * ========================================================================== */
+
+.select{
+	border: 1px solid #d4d3cf;
+	border-radius: 3px;
+	background: #fff;
+	text-align: left;
+	overflow: hidden;
+	position: relative;
+	height: 43px;
+
+	&:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 15px;
+		bottom: 0;
+		margin: auto;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 8px 4px 0 4px;
+		border-color: $blue transparent transparent transparent;
+	}
+
+	&__select-placeholder{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: -35px;
+		bottom: 0;		
+	}
+
+	&__select{
+		-webkit-appearance: none;
+		border: 0;
+		background: transparent;	
+		font-size: 18px;
+		font-family: $mainFontFamily;
+		line-height: 43px;
+		height: 43px;
+		padding: 0 0 0 20px;
+		margin: 0;
+		width: 100%;
+		display: block;
+		outline: none;
+	}
+}

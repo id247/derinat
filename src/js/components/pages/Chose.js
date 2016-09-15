@@ -32,7 +32,8 @@ class Chose extends React.Component {
 	}
 
 	_start(){
-		props.redirect('/');
+		const { props } = this;
+		props.redirect('/quiz');
 	}
 
 	_selectChildHandler = () => (e) => {
@@ -61,7 +62,7 @@ class Chose extends React.Component {
 					Выберите ребенка для продолжения
 				</h1>
 
-				<div className="app__buttons">
+				<div className="app__select">
 
 				<Select 
 					options={this.props.children.list} 

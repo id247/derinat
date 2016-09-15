@@ -136,6 +136,19 @@ export function getUserChildren(){
 }
 
 
+//getResults
+
+export function getResults(quizData) {
+
+	return dispatch => {
+
+		console.log(quizData);
+
+		dispatch(pageActions.setPageWithoutHistory('/results'));
+
+	}
+}
+
 //init
 
 export function getInitialData() {
