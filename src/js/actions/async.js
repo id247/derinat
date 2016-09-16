@@ -140,11 +140,66 @@ export function getUserChildren(){
 
 export function getResults(quizData) {
 
-	return dispatch => {
+	return (dispatch, getState) => {
 
-		console.log(quizData);
 
-		dispatch(pageActions.setPageWithoutHistory('/results'));
+		const state = getState();
+
+		console.log(quizData, state.children.current);
+
+		const currentChild = state.children.list.filter( child => child.id === state.children.current )[0];
+
+		console.log(currentChild);
+
+		const dates = [
+			{
+				from: '03-01-2016',
+				to: '03-31-2016',
+			},
+			{
+				from: '04-01-2016',
+				to: '04-30-2016',
+			},
+			{
+				from: '05-01-2016',
+				to: '05-31-2016',
+			},
+		];
+
+		API.getUser(currentChild.userId)
+		.then( child => {
+
+			console.log(child);
+
+			const promises = dates.map( date => {
+				return API.getUserLogEntries(child.personId, date.from, date.to);
+			});
+
+			return Promise.all(promises);
+		})
+		.then( entries => {
+
+			console.log(entries);
+
+			let allEntries = [];
+
+			entries.map( item => {
+				allEntries = allEntries.concat(item.logEntries);
+			});
+
+			console.log(allEntries);
+
+			const statuses = ['Absent','Ill','Pass'];
+
+			const AbsentEntries = allEntries.filter( entry => {
+				return statuses.indexOf(entry.status) > -1;
+			});
+
+			console.log(AbsentEntries, AbsentEntries.length);
+
+		})
+
+		//dispatch(pageActions.setPageWithoutHistory('/results'));
 
 	}
 }

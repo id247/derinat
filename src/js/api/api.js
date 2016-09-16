@@ -45,6 +45,20 @@ function getUserRelatives(userId = 'me'){
 	return Ajax(options);
 }
 
+function getUserLogEntries(personId, startDate = '09-01-2016', endDate = '09-30-2016'){
+	if (!personId){
+		return paramsError('no personId in API.getUserLogEntries');
+	}
+	const options = {
+		path: 'persons/' + personId + '/lesson-log-entries'				 
+				+ '?startDate=' + startDate
+				+ '&endDate=' + endDate
+				,
+	};
+
+	return Ajax(options);
+}
+
 function sendMessage(data){
 	if (!data){
 		return paramsError('no data in API.sendMessage');
@@ -201,6 +215,7 @@ export default {
 	getCoutersFromDB,
 	getCoutersFromDBdesc,
 	voteForCounterFromDB,
+	getUserLogEntries,
 }
 
 

@@ -43,9 +43,9 @@ class Quiz extends React.Component {
 
 		if (props.quiz.currentQuestion === 10){
 			props.getResults(state.answers);
-		}
-
-		props.quizSetCurrentQuestion( props.quiz.currentQuestion + 1 );
+		}else{
+			props.quizSetCurrentQuestion( props.quiz.currentQuestion + 1 );
+		}		
 	}
 
 	_addAnswer(questionIndex, answer){
@@ -330,6 +330,8 @@ class Quiz extends React.Component {
 						{questions.map( (question, index) => (
 							this._question(index + 1, question)
 						))}
+
+						
 
 					</form>
 
