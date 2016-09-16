@@ -39,7 +39,29 @@
 }
 
 .app-section{
-	position: relative;
+	display: flex;
+	min-height: 100vh;
+	align-items: center;
+
+	&__app{
+		width: 100%;
+	}
+}
+/* ==========================================================================
+ * .derinat-logo
+ * ========================================================================== */
+
+.derinat-logo{
+	display: inline-block;
+	text-indent: -9999px;
+	@include sprite($derinat);	
+}
+
+/* ==========================================================================
+ * app
+ * ========================================================================== */
+
+.app{
 
 	&__logo-placeholder{
 		position: absolute;
@@ -54,36 +76,14 @@
 		}
 	}
 
-	&__logo{
-		display: inline-block;
-		text-indent: -9999px;
-		@include sprite($derinat);
-	}
-
-	&__app-placeholder{		
-		display: flex;
-		min-height: 100vh;
+	&__content{
 		padding: 100px 0 0;
-
-		align-items: center;
-
+		max-width: 990px;
+		margin: auto;
 		@media (min-width: 1300px){
-			margin: 0 200px;
 			padding: 0;
 		}
 	}
-
-	&__app{
-		width: 100%;
-	}
-}
-
-
-/* ==========================================================================
- * app
- * ========================================================================== */
-
-.app{
 
 	&__loader{
 		position: fixed;
@@ -187,20 +187,6 @@
 @keyframes spin {
     from {transform:rotate(0deg);}
     to {transform:rotate(360deg);}
-}
-
-/* ==========================================================================
- * login
- * ========================================================================== */
-
-.login{
-	padding: 200px 0 0;
-
-	&__text{
-		margin: 0 0 50px;
-		text-align: center;		
-	}
-
 }
 
 /* ==========================================================================
@@ -334,4 +320,171 @@
 		cursor: move;
 		//width: 36px;
 	}
+}
+
+/* ==========================================================================
+ * login
+ * ========================================================================== */
+
+.login{
+
+	&__content{
+		background: url(../images/bg/intro.png) 0 0 no-repeat;
+		width: image-width('../assets/images/bg/intro.png');
+		min-height: image-height('../assets/images/bg/intro.png');
+		position: relative;
+		margin: auto;
+		text-align: center;
+		padding: 85px 70px 30px;
+
+		&:before{
+			position: absolute;
+			right: -100px;
+			bottom: -130px;
+			content: '';
+			background: url(../images/intro-bottles.png) 0 0 no-repeat;
+			width: image-width('../assets/images/intro-bottles.png');
+			height: image-height('../assets/images/intro-bottles.png');
+			pointer-events: none;
+		}
+	}
+
+	&__title{
+		font-size: 30px;
+		font-weight: 600;
+		margin: 0 0 20px;
+		line-height: (42/30);
+	}
+
+	&__text{
+		font-size: 18px;
+		margin: 0 0 20px;
+	}
+}
+
+
+/* ==========================================================================
+ * results
+ * ========================================================================== */
+
+.results{
+	padding: 20px 0 20px;
+	min-width: 1200px;
+
+
+	&__child{
+		width: 1000px;
+		margin:  0 auto 25px;
+		padding: 0 0 0 95px;
+	}
+
+	&__boxes{
+		background: url(../images/bg/bubles.jpg) 50% 50% no-repeat;
+		position: relative;
+
+
+	}
+
+	&__pers{
+		position: absolute;
+		display: block;
+		&--1{
+			top: 0;
+			left: -30px;
+			background: url(../images/pers/1.png) 0 0 no-repeat;
+			width: image-width('../assets/images/pers/1.png');
+			height: image-height('../assets/images/pers/1.png');
+		}
+
+		&--2{
+			top: 0;
+			right: 20px;
+			background: url(../images/pers/2.png) 0 0 no-repeat;
+			width: image-width('../assets/images/pers/2.png');
+			height: image-height('../assets/images/pers/2.png');
+		}
+
+		&--3{
+			bottom: 0;
+			left: 0;
+			background: url(../images/pers/3.png) 0 0 no-repeat;
+			width: image-width('../assets/images/pers/3.png');
+			height: image-height('../assets/images/pers/3.png');
+		}
+
+		&--4{
+			bottom: 50px;
+			right: 30px;
+			background: url(../images/pers/4.png) 0 0 no-repeat;
+			width: image-width('../assets/images/pers/4.png');
+			height: image-height('../assets/images/pers/4.png');
+		}
+	}
+
+	&__box{
+		margin: 0 auto 30px;
+		width: 1000px;
+		position: relative;
+	}
+
+	&__buttons{
+		
+		@media print{
+			display: none;
+		}
+	}
+}
+
+.results-child{
+
+	&__top{
+		@include clearfix;
+		margin: 0 0 30px;
+	}
+
+	&__logo{
+		float: right;
+	}
+
+	&__avatar-placeholder{
+		float: left;
+		width: 140px;
+	}
+
+	&__avatar{
+		width: 100%;
+		height: auto;
+	}
+
+	&__info{
+		margin: 0 0 0 180px;
+	}
+
+	&__name{
+		font-size: 30px;
+		font-weight: 600;
+		margin: 0 0 10px; 
+	}
+
+	&__age{
+		font-size: 30px;
+		font-weight: 600;
+		margin: 0 0 10px; 
+	}
+}
+
+.results-box{
+	background: #fff;
+	border-radius: 30px;
+	padding: 34px 95px 50px;
+	box-shadow: 0 3px 0 #a97369; 
+
+	&__title{
+		font-size: 32px;
+		text-align: center;
+		margin: 0 0 20px;
+		font-weight: 600;
+	}
+
+
 }

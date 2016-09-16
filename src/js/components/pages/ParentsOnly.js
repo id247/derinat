@@ -21,23 +21,33 @@ class ParentsOnly extends React.Component {
 		return (
 			<div className="app__page">
 
-				<h1 className="app__title">
-					Приложение доступно только родителям
-				</h1>
+				<div className="app__logo-placeholder">
 
-				<div className="app__buttons">
+					<span className="derinat-logo"></span>
 
-					<div className="app__button-placeholder">
+				</div>
 
-						<Button 
-							size="m"
-							color="orange"
-							type="button"
-							onClickHandler={props.logout}
-						>
-							Выход
-						</Button>
-					
+				<div className="app__content">
+
+					<h1 className="app__title">
+						Приложение доступно только родителям
+					</h1>
+
+					<div className="app__buttons">
+
+						<div className="app__button-placeholder">
+
+							<Button 
+								size="m"
+								color="orange"
+								type="button"
+								onClickHandler={props.logout}
+							>
+								Выход
+							</Button>
+						
+						</div>
+
 					</div>
 
 				</div>

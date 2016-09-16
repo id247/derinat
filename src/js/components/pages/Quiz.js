@@ -314,16 +314,26 @@ class Quiz extends React.Component {
 		return(
 			<div className="app__page quiz">
 
-				<form action="#" 
-					className="quiz__form"
-					method="post"
-				>
+				<div className="app__logo-placeholder">
 
-					{questions.map( (question, index) => (
-						this._question(index + 1, question)
-					))}
+					<span className="derinat-logo"></span>
 
-				</form>
+				</div>
+
+				<div className="app__content">
+
+					<form action="#" 
+						className="quiz__form"
+						method="post"
+					>
+
+						{questions.map( (question, index) => (
+							this._question(index + 1, question)
+						))}
+
+					</form>
+
+				</div>
 
 			</div>
 		);

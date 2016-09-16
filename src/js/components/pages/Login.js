@@ -19,35 +19,49 @@ class Login extends React.Component {
 		const { props } = this;
 
 		return (
-			<div className="app__page">
+			<div className="app__page login">
 
-				<h1 className="app__title">
-					Заголовок
-				</h1>
+				<div className="app__logo-placeholder">
 
-				<div className="app__text text">
-					
-					<p>
-						Текст
-					</p>
+					<span className="derinat-logo"></span>
 
 				</div>
 
-				<div className="app__buttons">
+				<div className="app__content">
 
-					<div className="app__button-placeholder">
+					<div className="login__content">
 
-						<Button 
-							size="m"
-							color="orange"
-							type="button"
-							onClickHandler={props.login}
-						>
-							Войти через Дневник.ру
-						</Button>
-					
+						<h1 className="login__title">
+							Как снизить риск заражения ребёнка<br/>
+							гриппом и ОРВИ в период<br/>
+							школьных эпидемий?
+						</h1>
+
+						<div className="login__text text">
+							
+							<p>
+								Ответьте на вопросы приложения анализатора и получите рекомендации, 
+								которые помогут Вам и Вашему ребенку легче преодолеть 
+								период школьных эпидемий.
+							</p>
+
+						</div>
+
+							<div className="login__button-placeholder">
+
+								<Button 
+									size="m"
+									color="orange"
+									type="button"
+									onClickHandler={props.login}
+								>
+									Пройти тест
+								</Button>
+
+						</div>
+
 					</div>
-
+					
 				</div>
 
 			</div>

@@ -9,7 +9,7 @@ import * as childrenActions from '../../actions/children';
 
 class Chose extends React.Component {
 
-	componentWillMount(){	
+	componentWillMount(){
 		this._checkChildrensCount();
 	}
 
@@ -18,17 +18,17 @@ class Chose extends React.Component {
 	}
 
 	_checkChildrensCount(){
-		const { props } = this;	
-		
+		const { props } = this;
+
 		if (props.children.list.length === 0){
 			props.redirect('/parentsonly');
 			return;
-		}		
+		}
 
 		if (props.children.list.length === 1){
 			props.redirect('/quiz');
 			return;
-		}		
+		}
 	}
 
 	_start(){
@@ -58,36 +58,47 @@ class Chose extends React.Component {
 		return(
 			<div className="app__page">
 
-				<h1 className="app__title">
-					Выберите ребенка для продолжения
-				</h1>
+				<div className="app__logo-placeholder">
 
-				<div className="app__select">
-
-				<Select 
-					options={this.props.children.list} 
-					optionValueKey="id" 
-					optionTitleKey="firstName" 
-					name="children"
-					onChangeHandler={this._selectChildHandler()}
-				/>
+					<span className="derinat-logo"></span>
 
 				</div>
 
-				<div className="app__buttons">
+				<div className="app__content">
 
-					<div className="app__button-placeholder">
+					<h1 className="app__title">
+						Выберите ребенка для продолжения
+					</h1>
 
-						<Button 
-							size="m"
-							color="orange"
-							type="button"
-							onClickHandler={this._startClickHandler()}
-						>
-							Продолжить
-						</Button>
-					
+					<div className="app__select">
+
+					<Select
+						options={this.props.children.list}
+						optionValueKey="id"
+						optionTitleKey="firstName"
+						name="children"
+						onChangeHandler={this._selectChildHandler()}
+					/>
+
 					</div>
+
+					<div className="app__buttons">
+
+						<div className="app__button-placeholder">
+
+							<Button
+								size="m"
+								color="orange"
+								type="button"
+								onClickHandler={this._startClickHandler()}
+							>
+								Продолжить
+							</Button>
+
+						</div>
+
+					</div>
+
 				</div>
 
 			</div>
@@ -103,8 +114,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	childrenSetCurrent: (childId) => dispatch(childrenActions.childrenSetCurrent(childId)), 
-	redirect: (pageId) => dispatch(pageActions.setPageWithoutHistory(pageId)), 
+	childrenSetCurrent: (childId) => dispatch(childrenActions.childrenSetCurrent(childId)),
+	redirect: (pageId) => dispatch(pageActions.setPageWithoutHistory(pageId)),
 });
 
 Chose.propTypes = {
