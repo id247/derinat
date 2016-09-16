@@ -174,8 +174,6 @@
 		height: 40px;
 		display: inline-block;
 		animation: spin .6s infinite linear;
-		text-indent: -9999px;
-		content: '';
 	}
 
 	&--visible{
@@ -369,66 +367,72 @@
 
 .results{
 	padding: 20px 0 20px;
-	min-width: 1200px;
 
-
+	&__bg{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	
 	&__child{
-		width: 1000px;
+		width: 800px;
 		margin:  0 auto 25px;
-		padding: 0 0 0 95px;
+		padding: 0 0 0 4%;
+		position: relative;
 	}
 
 	&__boxes{
-		background: url(../images/bg/bubles.jpg) 50% 50% no-repeat;
 		position: relative;
+	}
 
-
+	&__boxes-bg{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		margin-left: -(1446px/2)
 	}
 
 	&__pers{
 		position: absolute;
 		display: block;
+		left: 50%;
 		&--1{
 			top: 0;
-			left: -30px;
-			background: url(../images/pers/1.png) 0 0 no-repeat;
-			width: image-width('../assets/images/pers/1.png');
-			height: image-height('../assets/images/pers/1.png');
+			margin-left: -580px;
 		}
 
 		&--2{
-			top: 0;
-			right: 20px;
-			background: url(../images/pers/2.png) 0 0 no-repeat;
-			width: image-width('../assets/images/pers/2.png');
-			height: image-height('../assets/images/pers/2.png');
+			top: 30px;
+			margin-left: 380px;
 		}
 
 		&--3{
 			bottom: 0;
 			left: 0;
-			background: url(../images/pers/3.png) 0 0 no-repeat;
-			width: image-width('../assets/images/pers/3.png');
-			height: image-height('../assets/images/pers/3.png');
+			
+			@media (max-width: 1210px ){
+				left: 50%;
+				margin-left:  -530px;
+			}
 		}
 
 		&--4{
 			bottom: 50px;
-			right: 30px;
-			background: url(../images/pers/4.png) 0 0 no-repeat;
-			width: image-width('../assets/images/pers/4.png');
-			height: image-height('../assets/images/pers/4.png');
+			margin-left: 370px;
 		}
 	}
 
 	&__box{
 		margin: 0 auto 30px;
-		width: 1000px;
+		width: 800px;
 		position: relative;
 	}
 
 	&__buttons{
-		
+		position: relative;
 		@media print{
 			display: none;
 		}
@@ -448,7 +452,7 @@
 
 	&__avatar-placeholder{
 		float: left;
-		width: 140px;
+		width: 120px;
 	}
 
 	&__avatar{
@@ -457,33 +461,41 @@
 	}
 
 	&__info{
-		margin: 0 0 0 180px;
+		margin: 0 0 0 140px;
 	}
 
 	&__name{
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: 600;
-		margin: 0 0 10px; 
+		margin: 0 0 6px; 
 	}
 
 	&__age{
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: 600;
-		margin: 0 0 10px; 
+		margin: 0 0 6px; 
+	}
+
+	&__text{
+		font-size: 14px;
 	}
 }
 
 .results-box{
 	background: #fff;
 	border-radius: 30px;
-	padding: 34px 95px 50px;
+	padding: 15px 4% 30px;
 	box-shadow: 0 3px 0 #a97369; 
 
 	&__title{
-		font-size: 32px;
+		font-size: 20px;
 		text-align: center;
 		margin: 0 0 20px;
 		font-weight: 600;
+	}
+
+	&__text{
+		font-size: 14px;
 	}
 
 

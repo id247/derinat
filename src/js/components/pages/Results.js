@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { PromoOptions } from 'appSettings';
+
 import Button from '../../components/common/Button';
 
 import * as asyncActions from '../../actions/async';
@@ -35,13 +37,23 @@ class Results extends React.Component {
 		return (
 			<div className="results">
 
+				<img 
+					src={(PromoOptions.cdn + 'images/bg/res-bg.png')} 
+					alt="" 
+					className="results__bg"
+				/>
+
 				<div className="results__child results-child">
 
 					<div className="results-child__top">
 
 						<div className="results-child__logo">
 
-							<span className="derinat-logo"></span>
+							<img 
+								src={(PromoOptions.cdn + 'images/derinat.png')} 
+								alt="" 
+								//className="results__bg"
+							/>
 
 						</div>
 
@@ -89,6 +101,12 @@ class Results extends React.Component {
 				</div>
 
 				<div className="results__boxes">
+
+					<img 
+						src={(PromoOptions.cdn + 'images/bg/bubles.jpg')} 
+						alt="" 
+						className="results__boxes-bg"
+					/>
 
 					<div className="results__box results-box">
 
@@ -190,10 +208,29 @@ class Results extends React.Component {
 
 					</div>
 
-					<span className="results__pers results__pers--1"></span>
-					<span className="results__pers results__pers--2"></span>
-					<span className="results__pers results__pers--3"></span>
-					<span className="results__pers results__pers--4"></span>
+					<img 
+						src={(PromoOptions.cdn + 'images/pers/1.png')} 
+						alt="" 
+						className="results__pers results__pers--1"
+					/>
+
+					<img 
+						src={(PromoOptions.cdn + 'images/pers/2.png')} 
+						alt="" 
+						className="results__pers results__pers--2"
+					/>
+
+					<img 
+						src={(PromoOptions.cdn + 'images/pers/3.png')} 
+						alt="" 
+						className="results__pers results__pers--3"
+					/>
+
+					<img 
+						src={(PromoOptions.cdn + 'images/pers/4.png')} 
+						alt="" 
+						className="results__pers results__pers--4"
+					/>
 					
 				</div>
 
