@@ -97,9 +97,9 @@ class Results extends React.Component {
 						size="m"
 						color="orange"
 						type="button"
-						onClickHandler={this._printHandler()}
+						onClickHandler={this._previewHandler()}
 					>
-						Распечатать
+						Сохранить
 					</Button>
 				
 				</div>
@@ -158,9 +158,8 @@ class Results extends React.Component {
 		return (
 			<div className="results">
 
-				{/*
 				<div className={('results__forsave ' + (state.preview ? 'results__forsave--preview' : '') )} ref="forsave">
-				*/}
+
 					<img 
 						src={(PromoOptions.cdn + 'images/bg/res-bg.png')} 
 						alt="" 
@@ -357,11 +356,12 @@ class Results extends React.Component {
 						/>
 						
 					</div>
-				{/*
+				
 				</div>
-				*/}
 
 				{this._buttons1()}
+
+				{this._buttons2()}
 
 			</div>
 		);

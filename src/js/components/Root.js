@@ -11,6 +11,7 @@ import Login 		from '../components/pages/Login';
 import ParentsOnly 	from '../components/pages/ParentsOnly';
 import Chose 		from '../components/pages/Chose';
 import Results 		from '../components/pages/Results';
+import Fabric 		from '../components/pages/Fabric';
 
 const routes = (
 	<Router history={hashHistory}>
@@ -19,6 +20,7 @@ const routes = (
 			<Route path="parentsonly" component={ParentsOnly} />
 			<Route path="quiz" component={Quiz} />
 			<Route path="results" component={Results} />
+			<Route path="fabric" component={Fabric} />
 		</Route>
 		<Route path="/login" component={Login} />		
 	</Router>
