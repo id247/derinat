@@ -84,7 +84,7 @@ const config = {
 	development: {
 		cache: true,
 		entry: {
-			[server]: [
+			['derinat-app-' + server]: [
 				'whatwg-fetch',
 				'webpack-dev-server/client?http://localhost:3000',
 				'webpack/hot/only-dev-server',
@@ -115,10 +115,10 @@ const config = {
 	staging: {
 		cache: true,
 		entry: {
-			[server]: [
+			['derinat-app-' + server]: [
 				'babel-polyfill', 
 				'whatwg-fetch',
-				'./src/js/index',
+				'./src/js',
 			],
 		},
 		//devtool: '#inline-source-map',
@@ -146,10 +146,10 @@ const config = {
 	production: {
 		cache: true,
 		entry: {
-			[server]: [
+			['derinat-app-' + server]: [
 				'babel-polyfill', 
 				'whatwg-fetch',
-				'./src/js/index',
+				'./src/js',
 			],
 		},
 		output: {
