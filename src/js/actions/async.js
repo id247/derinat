@@ -11,6 +11,7 @@ import * as userActions 		from '../actions/user';
 import * as pageActions 		from '../actions/page';
 import * as childrenActions 	from '../actions/children';
 import * as initialActions 		from '../actions/initial';
+import * as resultsActions 		from '../actions/results';
 
 
 //error handler
@@ -142,8 +143,9 @@ export function getResults(quizData) {
 
 	return (dispatch, getState) => {
 
-
 		const state = getState();
+
+		dispatch(resultsActions.resultsSetQuizAnswers(quizData));
 
 		console.log(quizData, state.children.current);
 
@@ -166,10 +168,14 @@ export function getResults(quizData) {
 			},
 		];
 
+		dispatch(loadingActions.loadingShow());	
+
 		API.getUser(currentChild.userId)
 		.then( child => {
 
 			console.log(child);
+
+			dispatch(resultsActions.resultsSetChild(child));
 
 			const promises = dates.map( date => {
 				return API.getUserLogEntries(child.personId, date.from, date.to);
@@ -194,12 +200,25 @@ export function getResults(quizData) {
 			const AbsentEntries = allEntries.filter( entry => {
 				return statuses.indexOf(entry.status) > -1;
 			});
-
+			
 			console.log(AbsentEntries, AbsentEntries.length);
 
-		})
 
-		//dispatch(pageActions.setPageWithoutHistory('/results'));
+			dispatch(loadingActions.loadingHide());
+
+			
+			dispatch(resultsActions.resultsSetAbsents(AbsentEntries));
+			dispatch(resultsActions.resultsCompleted());
+
+			dispatch(pageActions.setPageWithoutHistory('/results'));
+
+			
+		})
+		.catch( err => { 
+			dispatch(loadingActions.loadingHide());
+
+			dispatch(catchError(err)); 
+		});
 
 	}
 }

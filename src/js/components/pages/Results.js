@@ -5,9 +5,10 @@ import { PromoOptions } from 'appSettings';
 
 import Button from '../../components/common/Button';
 
-import * as asyncActions from '../../actions/async';
+//import * as asyncActions from '../../actions/async';
 import * as pageActions from '../../actions/page';
 import * as quizActions from '../../actions/quiz';
+import * as resultsActions from '../../actions/results';
 
 class Results extends React.Component {
 
@@ -20,11 +21,15 @@ class Results extends React.Component {
 	}
 
 	componentWillMount(){
-		const { props } = this;		
+		const { props } = this;	
+		if (!props.results.completed){
+			props.redirect('/');
+		}	
 	}
 
 	_startAgain(){
 		const { props } = this;
+		props.resultsReset();
 		props.quizSetCurrentQuestion(1);
 		props.redirect('/');
 	}
@@ -152,8 +157,52 @@ class Results extends React.Component {
 		);
 	}
 
+	_calculateAge(birthday) { // birthday is a date
+	    const ageDifMs = Date.now() - new Date(birthday).getTime();
+	    const ageDate = new Date(ageDifMs); // miliseconds from epoch
+	    return Math.abs(ageDate.getUTCFullYear() - 1970);
+	}
+
+	_declOfNum(number, titles) {  
+	    const cases = [2, 0, 1, 1, 1, 2];  
+	    return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
+	}
+
 	render(){
 		const { props, state } = this;
+
+		const age = this._calculateAge(props.results.child.birthday);
+
+		const risk = props.results.quizAnswers.reduce( (prev, answer, index) => {
+
+			if (index === 0){
+				switch(answer){
+					case 1: 
+					case 2: return prev - 5;
+							break;
+					case 3: 
+					case 4: return prev + 5;
+							break;
+				}
+			}
+
+			if (index === 5){
+				switch(answer){
+					case 1: 
+					case 2: return prev + 5;
+							break;
+					case 3: 
+					case 4: return prev - 5;
+							break;
+				}
+			}
+
+			switch(answer){
+				case 'yes': return prev - 5;
+				case 'no': return prev + 5;
+			}
+
+		}, 50);
 
 		return (
 			<div className="results">
@@ -183,28 +232,29 @@ class Results extends React.Component {
 
 							<div className="results-child__avatar-placeholder">
 
-								<img src="" alt="" className="results-child__avatar"/>
+								<img src={props.results.child.photoMedium} alt="" className="results-child__avatar"/>
 
 							</div>
 
 							<div className="results-child__info">
 
 								<div className="results-child__name">
-									Иванов Степан Юрьевич
+									{props.results.child.fullName}
 								</div>
 
 								<div className="results-child__age">
-									11 лет
+									{age} {this._declOfNum(age, ['год', 'года', 'лет'])}
 								</div>
 
 								<div className="results-child__text text">
 
 									<p>
-										Риск заражения ОРВИ и гриппом в этом году — 70%*
+										Риск заражения ОРВИ и гриппом в этом году — {risk}%*
 									</p>
 									<p>
 										<em>
-											(значение получено на основании Ваших ответов на вопросы и является приблизительным).
+											*значение получено на основании Ваших ответов на 
+											вопросы и является приблизительным.
 										</em>
 									</p>
 
@@ -217,7 +267,34 @@ class Results extends React.Component {
 						<div className="results-child__text text">
 
 							<p>
-								В прошлой четверти Ваш ребёнок пропустил 45 уроков. Если это произошло из-за болезни, рекомендуем в этом году тщательнее подготовиться к периоду школьных эпидемий и обратить пристальное внимание на правила личной гигиены, поддержание здорового микроклимата в помещениях и меры медикаментозной профилактики. Ниже приведен список рекомендаций, придерживаясь которых, Вы сможете повысить иммунитет ребенка и сократить пропуски занятий по болезни в этом учебном году.
+								В прошлой четверти Ваш ребёнок пропустил 
+								{' '}
+								<strong>
+									{props.results.absents.length} 
+									{' '}
+									{this._declOfNum(props.results.absents.length, ['урок', 'урока', 'уроков'])}
+								</strong>. 
+								{' '}
+								{
+									(props.results.absents.length > 10)
+									? 
+									<span>
+										Если это произошло из-за болезни, рекомендуем в этом году тщательнее подготовиться к 
+										периоду школьных эпидемий и обратить пристальное внимание на правила личной гигиены, 
+										поддержание здорового микроклимата в помещениях и меры медикаментозной профилактики. 
+										Ниже приведен список рекомендаций, придерживаясь которых, Вы сможете повысить иммунитет 
+										ребенка и сократить пропуски занятий по болезни в этом учебном году.
+									</span>
+									:
+									<span>
+										Здорово! Значит, у него сильный иммунитет, который эффективно справляется с инфекцией. 
+										Чтобы не болеть и в этом году, рекомендуем Вам обратить внимание на правила личной 
+										гигиены, поддержание микроклимата в помещении и меры медикаментозной профилактики. 
+										Ниже приведен список рекомендаций, придерживаясь которых,
+										Вы сможете снизить риск заболеваний в этом учебном году.
+									</span>
+								}
+								
 							</p>
 
 						</div>
@@ -374,11 +451,13 @@ Results.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
 	profile: state.user.profile,
+	results: state.results,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({ 
 	redirect: (pageId) => dispatch(pageActions.setPageWithoutHistory(pageId)), 
 	quizSetCurrentQuestion: (questionId) => dispatch(quizActions.quizSetCurrentQuestion(questionId)), 
+	resultsReset: () => dispatch(resultsActions.resultsReset()), 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

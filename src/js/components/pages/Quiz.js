@@ -81,7 +81,9 @@ class Quiz extends React.Component {
 	}
 
 	_sliderChangeHandler = (questionIndex) => (value) => {
-		this._addAnswer(questionIndex, value);
+		setTimeout(() => { //hack for update state twice
+			this._addAnswer(questionIndex, value);
+		}, 0);
 	}
 
 	_image(questionIndex){
@@ -255,7 +257,7 @@ class Quiz extends React.Component {
 						min={1} 
 						max={4}
 						className="quiz-slider__inner-line"
-						onChange={this._sliderChangeHandler(2)}
+						onChange={this._sliderChangeHandler(6)}
 						>
 						<div className="quiz-slider__handle">
 							

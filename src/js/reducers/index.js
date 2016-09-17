@@ -7,6 +7,7 @@ import { page } from './page';
 import { children } from './children';
 import { quiz } from './quiz';
 import { initialData } from './initial';
+import { results } from './results';
 
 const rootReducer = combineReducers({
 	error,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	children,
 	quiz,
 	initialData,
+	results,
 });
 
 export default rootReducer;
