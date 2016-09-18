@@ -220,6 +220,7 @@
 	&__select{
 		-webkit-appearance: none;
 		border: 0;
+		outline: none;
 		background: transparent;	
 		font-size: 18px;
 		font-family: $mainFontFamily;
@@ -230,5 +231,10 @@
 		width: 100%;
 		display: block;
 		outline: none;
+
+		&:-moz-focusring {
+		    color: transparent;
+		    text-shadow: 0 0 0 #000;
+		}
 	}
 }

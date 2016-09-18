@@ -372,8 +372,6 @@
 		padding: 10px 0 10px;
 	}
 
-	background: #fff;
-
 	&__forsave{
 
 		&--preview{
@@ -409,12 +407,14 @@
 
 	&__boxes{
 		position: relative;
+		//overflow: hidden;
 	}
 
 	&__boxes-bg{
 		position: absolute;
 		top: 0;
 		bottom: 0;
+		//height: 100%;
 		left: 50%;
 		margin-left: -(1446px/2)
 	}
@@ -425,7 +425,12 @@
 		left: 50%;
 		&--1{
 			top: 0;
-			margin-left: -565px;
+			left: -30px;
+			
+			@media (max-width: 1130px ){
+				left: 50%;
+				margin-left:  -600px;
+			}
 		}
 
 		&--2{
@@ -434,7 +439,7 @@
 		}
 
 		&--3{
-			bottom: 0;
+			top: 750px;
 			left: 0;
 			
 			@media (max-width: 1070px ){
@@ -444,7 +449,7 @@
 		}
 
 		&--4{
-			bottom: 50px;
+			top: 780px;
 			margin-left: 370px;
 		}
 	}
