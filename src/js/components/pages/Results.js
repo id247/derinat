@@ -5,10 +5,8 @@ import { PromoOptions } from 'appSettings';
 
 import Button from '../../components/common/Button';
 
-//import * as asyncActions from '../../actions/async';
+import * as asyncActions from '../../actions/async';
 import * as pageActions from '../../actions/page';
-import * as quizActions from '../../actions/quiz';
-import * as resultsActions from '../../actions/results';
 
 class Results extends React.Component {
 
@@ -29,9 +27,8 @@ class Results extends React.Component {
 
 	_startAgain(){
 		const { props } = this;
-		props.resultsReset();
-		props.quizSetCurrentQuestion(1);
-		props.redirect('/');
+
+		props.startQuizAgain();
 	}
 
 	_startAgainHandler = () => (e) => {
@@ -456,8 +453,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({ 
 	redirect: (pageId) => dispatch(pageActions.setPageWithoutHistory(pageId)), 
-	quizSetCurrentQuestion: (questionId) => dispatch(quizActions.quizSetCurrentQuestion(questionId)), 
-	resultsReset: () => dispatch(resultsActions.resultsReset()), 
+	startQuizAgain: () => dispatch(asyncActions.startQuizAgain()), 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

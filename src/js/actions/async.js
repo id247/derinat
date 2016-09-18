@@ -12,6 +12,7 @@ import * as pageActions 		from '../actions/page';
 import * as childrenActions 	from '../actions/children';
 import * as initialActions 		from '../actions/initial';
 import * as resultsActions 		from '../actions/results';
+import * as quizActions 		from '../actions/quiz';
 
 
 //error handler
@@ -222,6 +223,22 @@ export function getResults(quizData) {
 
 	}
 }
+
+
+export function startQuizAgain(){
+
+	return (dispatch, getState) => {
+
+		const children = getState().children.list;
+	
+		dispatch(resultsActions.resultsReset());
+		dispatch(quizActions.quizSetCurrentQuestion(1));
+		dispatch(childrenActions.childrenSetCurrent(children[0].id));
+		dispatch(pageActions.setPageWithoutHistory('/'));
+
+	}
+}
+
 
 //init
 

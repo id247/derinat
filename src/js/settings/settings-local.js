@@ -21,8 +21,8 @@ export const OAuthOptions = {
 	provider: 'derinatStaging',
 	authUrl: 'https://login.dnevnik.ru/oauth2',
 	grantUrl: 'https://api.dnevnik.ru/v1/authorizations',
-	scope: 'Avatar,FullName,Birthday,Age,Roles,Schools,Organizations,EduGroups,Lessons,Marks,EduWorks,Relatives,Files,Contacts,Friends,Groups,Networks,Events,Wall,Messages,EmailAddress,Sex,SocialEntityMembership',	
-	clientId: 'f84accc763e34b5b83469c9ef1a9ea62',
+	scope: 'Avatar,FullName,Roles,Lessons,Relatives',	
+	clientId: '1a3b7aca792d470cae448f41451e2ee1',
 	redirectUrl: '//localhost:9000/oauth.html',
 }
 
