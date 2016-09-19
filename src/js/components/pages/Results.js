@@ -46,7 +46,11 @@ class Results extends React.Component {
 	_printHandler = () => (e) => {
 		e.preventDefault();
 
-		window.print();
+		if (typeof ga === 'function'){
+			ga('send', 'event', 'Рекомендация', 'Распечатать');
+		}
+
+		setTimeout(window.print, 0);
 	}
 
 	_saveHandler = () => (e) => {
