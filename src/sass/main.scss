@@ -77,7 +77,7 @@
 	}
 
 	&__content{
-		padding: 100px 0 0;
+		padding: 110px 0 0;
 		max-width: 990px;
 		margin: auto;
 		@media (min-width: 1300px){
@@ -103,7 +103,7 @@
 	}
 
 	&__page{
-		padding: 35px 0;
+		//padding: 35px 0;
 	}
 
 	&__title{
@@ -202,14 +202,33 @@
 	}
 
 	&__title{
-		
+
+		@media (max-height: 750px){
+			font-size: 28px;
+			margin-bottom: 25px;
+		}		
 	}
 
 	&__image-placeholder{
 		margin: 0 0 20px;
-		height: 455px;
-		line-height: 455px;
+		height: 400px;
+		line-height: 400px;
 		text-align: center;
+
+		@media (max-height: 850px){
+			height: 300px;
+			line-height: 300px;
+		}
+
+		@media (max-height: 750px){
+			height: 250px;
+			line-height: 250px;
+		}
+
+		@media (max-height: 650px){
+			height: 200px;
+			line-height: 200px;
+		}
 	}
 
 	&__image{
@@ -338,12 +357,17 @@
 		&:before{
 			position: absolute;
 			right: -100px;
-			bottom: -130px;
+			bottom: -150px;
 			content: '';
 			background: url(../images/intro-bottles.png) 0 0 no-repeat;
 			width: image-width('../assets/images/intro-bottles.png');
 			height: image-height('../assets/images/intro-bottles.png');
 			pointer-events: none;
+			transform-origin: 0 0;
+
+			@media (max-height: 800px){
+				transform: scale(.7);
+			}
 		}
 	}
 
@@ -395,12 +419,13 @@
 	}
 	
 	&__child{
-		width: 800px;
+		width: 1000px;
 		margin: 0 auto 25px;
 		padding: 0 0 0 4%;
 		position: relative;
 
-		@media print{
+		@media print, (max-width: 1200px){
+			width: 780px;
 			margin-bottom: 13px;
 		}
 	}
@@ -422,49 +447,50 @@
 	&__pers{
 		position: absolute;
 		display: block;
-		left: 50%;
+		//left: 50%;
 		&--1{
-			top: 0;
-			left: -30px;
+			top: -20px;
+			left: -50px;
 			
-			@media (max-width: 1130px ){
-				left: 50%;
-				margin-left:  -600px;
+			@media (max-width: 1200px ){
+				left: -60px;
 			}
 		}
 
 		&--2{
 			top: 30px;
-			margin-left: 380px;
+			right: 50px;
+			//margin-left: 380px;
 		}
 
 		&--3{
-			top: 750px;
+			top: 75%;
 			left: 0;
 			
-			@media (max-width: 1070px ){
-				left: 50%;
-				margin-left:  -530px;
+			@media (max-width: 1200px ){
+				left: -40px;
 			}
 		}
 
 		&--4{
-			top: 780px;
-			margin-left: 370px;
+			top: 75%;
+			right: 30px;
 		}
 	}
 
 	&__box{
 		margin: 0 auto 30px;
-		width: 800px;
+		width: 1000px;
 		position: relative;
 
-		@media print{
+		@media print, (max-width: 1200px){
+			width: 780px;
 			margin-bottom: 13px;
 		}
 	}
 
 	&__buttons{
+		padding: 30px;
 		position: relative;
 		@media print{
 			display: none;
@@ -510,7 +536,7 @@
 	}
 
 	&__text{
-		font-size: 14px;
+		font-size: 18px;
 
 		@media print{
 			font-size: 13px;
@@ -532,7 +558,7 @@
 	}
 
 	&__text{
-		font-size: 14px;
+		font-size: 18px;
 		@media print{
 			font-size: 13px;
 		}
