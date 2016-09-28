@@ -55,6 +55,13 @@ class Chose extends React.Component {
 			return null;
 		}
 
+		const fullNamedChildren = props.children.list.map( child => {
+			return {
+				...child,
+				fullName: child.lastName + ' ' + child.firstName + ' ' + child.middleName,
+			}
+		})
+
 		return(
 			<div className="app__page">
 
@@ -67,15 +74,15 @@ class Chose extends React.Component {
 				<div className="app__content">
 
 					<h1 className="app__title">
-						Выберите ребенка для продолжения
+						Выберите ФИО ребенка для продолжения
 					</h1>
 
 					<div className="app__select">
 
 					<Select
-						options={this.props.children.list}
+						options={fullNamedChildren}
 						optionValueKey="id"
-						optionTitleKey="firstName"
+						optionTitleKey="fullName"
 						name="children"
 						onChangeHandler={this._selectChildHandler()}
 					/>
